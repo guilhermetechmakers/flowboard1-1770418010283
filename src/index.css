@@ -1,68 +1,85 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
+@layer base {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    /* FlowBoard UI Guide - RGB values for Tailwind alpha */
+    --background: 255 255 255;
+    --foreground: 11 27 43;
+    --card: 255 255 255;
+    --card-foreground: 11 27 43;
+    --primary: 11 99 255;
+    --primary-foreground: 255 255 255;
+    --primary-variant: 9 79 200;
+    --secondary: 246 248 250;
+    --secondary-foreground: 11 27 43;
+    --muted: 246 248 250;
+    --muted-foreground: 90 106 120;
+    --accent: 23 185 120;
+    --accent-foreground: 255 255 255;
+    --destructive: 224 36 36;
+    --border: 230 233 238;
+    --input: 230 233 238;
+    --ring: 11 99 255;
+    --warning: 255 176 32;
+    --shadow: 11 27 43;
+    --popover: 255 255 255;
+    --popover-foreground: 11 27 43;
   }
-  a:hover {
-    color: #747bff;
+
+  .dark {
+    --background: 11 27 43;
+    --foreground: 246 248 250;
+    --card: 20 40 60;
+    --card-foreground: 246 248 250;
+    --primary: 11 99 255;
+    --primary-foreground: 255 255 255;
+    --secondary: 30 50 70;
+    --secondary-foreground: 246 248 250;
+    --muted: 30 50 70;
+    --muted-foreground: 150 160 170;
+    --border: 50 70 90;
+    --input: 50 70 90;
   }
-  button {
-    background-color: #f9f9f9;
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  h1 {
+    @apply text-hero font-semibold;
+  }
+
+  h2 {
+    @apply text-h2 font-semibold;
+  }
+
+  h3 {
+    @apply text-h3 font-semibold;
+  }
+}
+
+@layer utilities {
+  .animate-in {
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-in,
+    .animate-fade-in,
+    .animate-fade-in-up,
+    .animate-scale-in {
+      animation: none;
+    }
   }
 }
